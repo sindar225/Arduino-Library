@@ -1,7 +1,9 @@
 #define THINGER_SERVER "138.201.45.114"
+#define _DEBUG_
+#define _DISABLE_TLS_
 
 #include <ESP8266WiFi.h>
-#include <ThingerESP8266.h>
+#include <ThingerSmartConfig.h>
 
 #define MQ2pin A0
 
@@ -9,11 +11,8 @@
 #define DEVICE_ID "NODEMCU1"
 #define DEVICE_CREDENTIAL "F5590A00g_4"
 
-#define SSID "Thornium_AP"
-#define SSID_PASSWORD "FyfhxbZ12"
-
 float sensorValue;  // переменная для хранения значения датчика
-ThingerESP8266 thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL);
+ThingerSmartConfig thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL, false);
 
 void setup() {
   Serial.begin(9600);
@@ -21,18 +20,15 @@ void setup() {
   //delay(20000);       // дать MQ-2 время для прогрева
   //delay(2000);
 
-  thing.add_wifi(SSID, SSID_PASSWORD);
-
   // resource output example (i.e. reading a sensor value)
   thing["air_quality"] >> outputValue(getSensorValue());
-
 }
 
 void loop() {
   pson data;
   data["air_quality"] = getSensorValue();
   if (int(getSensorValue()) >= 300) {
-    thing.call_endpoint("telegramAlert", getSensorValue());
+    thing.call_endpoint("telegramAlert", data);
   }
 
   thing.handle();
