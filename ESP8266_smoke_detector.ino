@@ -1,16 +1,16 @@
-#define THINGER_SERVER ""
+#define THINGER_SERVER "138.201.45.114"
 
 #include <ESP8266WiFi.h>
 #include <ThingerESP8266.h>
 
 #define MQ2pin A0
 
-#define USERNAME ""
-#define DEVICE_ID ""
-#define DEVICE_CREDENTIAL ""
+#define USERNAME "sindar225"
+#define DEVICE_ID "NODEMCU1"
+#define DEVICE_CREDENTIAL "F5590A00g_4"
 
-#define SSID ""
-#define SSID_PASSWORD ""
+#define SSID "Thornium_AP"
+#define SSID_PASSWORD "FyfhxbZ12"
 
 float sensorValue;  // переменная для хранения значения датчика
 ThingerESP8266 thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL);
