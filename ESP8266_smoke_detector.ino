@@ -1,15 +1,11 @@
-#define THINGER_SERVER "138.201.45.114"
 #define _DEBUG_
 #define _DISABLE_TLS_
 
+#include "credentials.h"
 #include <ESP8266WiFi.h>
 #include <ThingerSmartConfig.h>
 
 #define MQ2pin A0
-
-#define USERNAME "sindar225"
-#define DEVICE_ID "Kitchen_ESP8266"
-#define DEVICE_CREDENTIAL "m5m@Rhp9H2kw"
 
 float sensorValue;  // переменная для хранения значения датчика
 ThingerSmartConfig thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL, false);
