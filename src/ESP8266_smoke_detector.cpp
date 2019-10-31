@@ -1,6 +1,7 @@
 #define _DEBUG_
 #define _DISABLE_TLS_
 
+#include <Arduino.h>
 #include "credentials.h"
 #include <ESP8266WiFi.h>
 #include <ThingerSmartConfig.h>
@@ -9,6 +10,8 @@
 
 float sensorValue;  // переменная для хранения значения датчика
 ThingerSmartConfig thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL, false);
+
+float getSensorValue();
 
 void setup() {
   Serial.begin(9600);
